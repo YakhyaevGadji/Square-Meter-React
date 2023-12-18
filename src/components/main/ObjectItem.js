@@ -7,14 +7,14 @@ function ObjectItem({data}) {
                 <a href="object.html" className="card">
                     <div className="card__header">
                         <div className="card__title">
-                            ЖК Генеральский
+                            ЖК {obj.complex_name}
                         </div>
                         <div className="card__like card__like--active">
                             <i className="fas fa-heart"></i>
                         </div>
                     </div>
                     <div className="card__img">
-                        <img src="img/flat-plan.png" alt="План квартиры" />
+                        <img src={obj.image} alt="План квартиры" />
                     </div>
                     <div className="card__desc">
                         <div className="card__price">
