@@ -1,5 +1,6 @@
-function ObjectItem({data}) {
+import priceFormatter from "../../utils/priceFormatter";
 
+function ObjectItem({data}) {
     const objects = data.map((obj) => {
         return (
             <article className="col-md-4" key={obj.id}>  
@@ -18,10 +19,10 @@ function ObjectItem({data}) {
                     <div className="card__desc">
                         <div className="card__price">
                             <div className="card__price-total">
-                                4 200 000 ₽
+                                {priceFormatter(obj.price_total)} ₽
                             </div>
                             <div className="card__price-per-meter">
-                                64 000 ₽/м2
+                                {priceFormatter(obj.price_sq_m)} ₽/м2
                             </div>
                         </div>
 
@@ -30,20 +31,20 @@ function ObjectItem({data}) {
                                 <div className="params__definition">
                                     Комнат
                                 </div>
-                                <div className="params__value">1</div>
+                                <div className="params__value">{obj.rooms}</div>
                             </div>
                             <div className="params__item">
                                 <div className="params__definition">
                                     Площадь
                                 </div>
-                                <div className="params__value">56</div>
+                                <div className="params__value">{obj.square}</div>
                             </div>
                         </div>
 
                     </div>
                     <div className="card__footer">
-                        <div className="card__art">ГЕН-112-42</div>
-                        <div className="card__floor">Этаж 4 из 12</div>
+                        <div className="card__art">{obj.scu}</div>
+                        <div className="card__floor">Этаж {obj.floor} из {obj.floor_total}</div>
                     </div>
                 </a>
             </article>
