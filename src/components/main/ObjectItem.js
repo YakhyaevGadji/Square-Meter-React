@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import priceFormatter from "../../utils/priceFormatter";
 
 function ObjectItem({data}) {
     const objects = data.map((obj) => {
         return (
             <article className="col-md-4" key={obj.id}>  
-                <a href="object.html" className="card">
+                <Link to={`object/${obj.id}`} className="card">
                     <div className="card__header">
                         <div className="card__title">
                             ЖК {obj.complex_name}
@@ -46,7 +47,7 @@ function ObjectItem({data}) {
                         <div className="card__art">{obj.scu}</div>
                         <div className="card__floor">Этаж {obj.floor} из {obj.floor_total}</div>
                     </div>
-                </a>
+                </Link>
             </article>
         );
     });

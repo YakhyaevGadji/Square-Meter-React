@@ -1,8 +1,9 @@
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Favorite from "../Favorite/Favorite";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
 import HomeMain from "../main/HomeMain";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Object from "../object/Object";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomeMain/>}/>
                     <Route path="/favorite" element={<Favorite/>}/>
+                    <Route path="/object/:id" element={<Object/>}/>
                 </Routes>
             </div>
 
