@@ -2,13 +2,13 @@ import { useParams } from "react-router-dom";
 import useFetchItem from "../fetchRequest/useFetchItem";
 import Preloader from "../loading/Preloader";
 import priceFormatter from "../../utils/priceFormatter";
+import { useState } from "react";
 
 function Object() {
 
     const {id} = useParams();
     const {item, isLoadin, error} = useFetchItem('https://jsproject.webcademy.ru/items/' + id);
-
-    console.log(item);
+    const [modelState, setModelState] = useState(false);
 
     return (
         <div>
@@ -77,11 +77,75 @@ function Object() {
                             </div>
                         </div>
 
-                        <button className="button-order">Забронировать</button>
+                        <button onClick={() => {setModelState(!modelState)}} className="button-order">Забронировать</button>
                     </div>
                 </div>
-            </div>
-            }
+            </div>}
+            {modelState && <div className="modal-wrapper">
+                <div className="modal">
+                <div className="modal__header">
+                    <div className="modal__title">
+                        Заявка на бронирование
+                    </div>
+                    <div className="modal__details">
+                        Квартира <span>96</span> в Первом квартале Дом 5
+                        <div className="modal__details-art">ГЕН-112-42</div>
+                    </div>
+                </div>
+
+                <form className="modal__form">
+                    <div className="modal__form-content">
+                        <div className="formgroup">
+                            <label
+                                className="modal__form-input-label"
+                                htmlFor="form-phone"
+                            >
+                                Имя
+                            </label>
+                            <input
+                                type="text"
+                                id="form-name"
+                                className="modal__form-input"
+                                placeholder="Введите имя"
+                            />
+                        </div>
+                        <div className="formgroup">
+                            <label
+                                className="modal__form-input-label"
+                                htmlFor="form-phone"
+                            >
+                                Телефон
+                            </label>
+                            <input
+                                type="text"
+                                id="form-phone"
+                                className="modal__form-input"
+                                placeholder="+7 (XXX) XXX-XX-XX"
+                            />
+                        </div>
+
+                        <div className="formgroup formgroup--checkbox">
+                            <input type="checkbox" id="policy" defaultChecked />
+                            <label className="policy-text" htmlFor="policy"
+                                >Я согласен на обработку моих персональных
+                                данных. С Политикой в отношении обработки
+                                персональных данных ознакомлен и
+                                согласен.
+                            </label>
+                            
+                        </div>
+                    </div>
+                    <input
+                        className="modal__submit"
+                        type="submit"
+                        value="Отправить заявку"
+                    />
+                </form>
+                    <button onClick={() => {setModelState(!modelState)}} className="modal__close">
+                        Закрыть
+                    </button>
+                </div>
+            </div>}
         </div>
         
       
