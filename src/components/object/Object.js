@@ -81,7 +81,7 @@ function Object() {
                     </div>
                 </div>
             </div>}
-            {modelState && <div className="modal-wrapper">
+            {modelState && <div onClick={() => {setModelState(!modelState)}} className="modal-wrapper">
                 <div className="modal">
                 <div className="modal__header">
                     <div className="modal__title">
